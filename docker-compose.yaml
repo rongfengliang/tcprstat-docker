@@ -1,5 +1,10 @@
 version: "3"
 services: 
+    tcpcollect-stretch: 
+      image: dalongrong/tcpcollect:stretch-1.0
+      build: 
+         context: ./
+         dockerfile: ./Dockerfile-tcpcollect-stretch
     tcprstat-stretch: 
       image: dalongrong/tcprstat:stretch-0.3.1
       build: 
@@ -14,5 +19,18 @@ services:
       build: 
         context: ./
         dockerfile: ./Dockerfile-demo
+      cap_add: 
+      - NET_ADMIN
       ports: 
       - 8080:8080
+    tcpcollect-demo: 
+      build: 
+        context: ./
+        dockerfile: ./Dockerfile-demo-mysql
+      command: --character-set-server=utf8 --collation-server=utf8_bin --innodb_log_file_size=256m --max_allowed_packet=34m
+      environment: 
+      - MYSQL_ROOT_PASSWORD=dalongrong
+      cap_add: 
+      - NET_ADMIN
+      ports: 
+      - 3306:3306

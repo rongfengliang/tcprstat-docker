@@ -1,0 +1,3 @@
+FROM mysql:5.7
+LABEL AUTHOR="dalongrong"
+COPY --from=dalongrong/tcpcollect:stretch-1.0  /opt/tcpcollect /opt/tcpcollect/

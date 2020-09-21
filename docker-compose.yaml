@@ -1,0 +1,18 @@
+version: "3"
+services: 
+    tcprstat-stretch: 
+      image: dalongrong/tcprstat:stretch-0.3.1
+      build: 
+         context: ./
+         dockerfile: ./Dockerfile-stretch
+    tcprstat-alpine: 
+      image: dalongrong/tcprstat:alpine-0.3.1
+      build: 
+        context: ./
+        dockerfile: ./Dockerfile-alpine
+    tcprstat-demo: 
+      build: 
+        context: ./
+        dockerfile: ./Dockerfile-demo
+      ports: 
+      - 8080:8080

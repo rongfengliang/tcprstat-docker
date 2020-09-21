@@ -1,0 +1,4 @@
+FROM tomcat
+LABEL AUTHOR="dalongrong"
+COPY --from=dalongrong/tcprstat:stretch-0.3.1  /opt/tcprstat /opt/tcprstat/
+EXPOSE 8080
